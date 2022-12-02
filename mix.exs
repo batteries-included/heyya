@@ -1,11 +1,17 @@
 defmodule Heyya.MixProject do
   use Mix.Project
 
+  @version "0.1.0"
+  @source_url "https://github.com/batteries-included/heyya"
+
   def project do
     [
       app: :heyya,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.14",
+      description: description(),
+      docs: docs(),
+      package: package(),
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       deps: deps()
@@ -28,7 +34,30 @@ defmodule Heyya.MixProject do
     [
       {:snapshy, "~> 0.2"},
       {:phoenix_live_view, "~> 0.18.3"},
-      {:phoenix, "~> 1.6.15"}
+      {:phoenix, "~> 1.6.15"},
+      # Dev deps
+      {:ex_doc, "~> 0.29.1", only: [:dev], runtime: false},
+      {:dialyxir, "~> 1.2", only: [:dev], runtime: false}
     ]
   end
+
+  defp package do
+    [
+      name: :heyya,
+      maintainers: ["Elliott Clark"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => @source_url}
+    ]
+  end
+
+  defp docs do
+    [
+      main: "readme",
+      source_ref: @version,
+      source_url: @source_url,
+      extras: ["README.md"]
+    ]
+  end
+
+  defp description, do: "Heyya the snapshot testing utility for Phoenix framework components"
 end

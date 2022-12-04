@@ -1,9 +1,12 @@
 .PHONY: test lint analyze docs i
 
-all: test format docs analyze
+all: test lint format docs analyze
 
 test:
 	mix test
+
+lint:
+	mix credo
 
 analyze:
 	mix dialyzer

@@ -1,4 +1,7 @@
 defmodule Header do
+  @moduledoc """
+  Example component to use in testing Heyya.
+  """
   use Phoenix.Component
 
   attr :class, :any, default: "text-3xl font-bold tracking-tight text-gray-900"

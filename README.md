@@ -11,7 +11,7 @@ To use Heyya in your Phoenix project, add it to your list of dependencies in mix
 ```elixir
 def deps do
   [
-    {:heyya, "~> 0.1.3"}
+    {:heyya, "~> 0.1.4"}
   ]
 end
 ```

@@ -1,7 +1,7 @@
 defmodule Heyya.MixProject do
   use Mix.Project
 
-  @version "0.1.3"
+  @version "0.1.4"
   @source_url "https://github.com/batteries-included/heyya"
 
   def project do

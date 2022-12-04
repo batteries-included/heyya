@@ -1,8 +1,22 @@
 # Heyya
 
-`Heyya` is a utility to help with snapshot testing your
-[Phoenix](https://www.phoenixframework.org/) components. Under the hood it
-uses [Snapshy](https://hex.pm/packages/snapshy)
+`Heyya` is a utility to help with snapshot testing your [Phoenix](https://www.phoenixframework.org/) components. Under the hood it uses [Snapshy](https://hex.pm/packages/snapshy)
+
+## Getting Started
+
+Getting Started
+
+To use Heyya in your Phoenix project, add it to your list of dependencies in mix.exs:
+
+```elixir
+def deps do
+  [
+    {:heyya, "~> 0.1.1"}
+  ]
+end
+```
+
+Then, run `mix deps.get` to install Heyya and its dependencies.
 
 ## Example Usage
 
@@ -18,19 +32,14 @@ component_snapshot_test "Super Simple H1 Test" do
 end
 ```
 
-## Installation
+To run the snapshot tests, run `mix test` as usual. This will compare the snapshots to the current rendered output of the components and fail the tests if the snapshots do not match.
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `heyya` to your list of dependencies in `mix.exs`:
+If you need to update the snapshots for any reason, you can run `SNAPSHY_OVERRIDE=true mix test` to reset the snapshot values to the current rendered output of the components.
 
-```elixir
-def deps do
-  [
-    {:heyya, "~> 0.1.0"}
-  ]
-end
-```
+## Contributing
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at <https://hexdocs.pm/heyya>.
+We welcome contributions to Heyya! Please see the CONTRIBUTING file for guidelines on how to contribute.
+
+## License
+
+Heyya is released under the MIT License.

@@ -1,5 +1,5 @@
-defmodule HeyyaTest do
-  use Heyya
+defmodule HeyyaTest.SnapshotTest do
+  use Heyya.SnapshotTest
 
   component_snapshot_test "Header test" do
     assigns = %{}

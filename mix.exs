@@ -1,7 +1,7 @@
 defmodule Heyya.MixProject do
   use Mix.Project
 
-  @version "0.1.4"
+  @version "0.2.0"
   @source_url "https://github.com/batteries-included/heyya"
 
   def project do
@@ -14,7 +14,8 @@ defmodule Heyya.MixProject do
       package: package(),
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      dialyzer: [plt_add_apps: [:ex_unit]]
     ]
   end
 
@@ -60,5 +61,5 @@ defmodule Heyya.MixProject do
     ]
   end
 
-  defp description, do: "Heyya the snapshot testing utility for Phoenix framework components"
+  defp description, do: "Heyya the testing utility for Phoenix framework components and live view"
 end

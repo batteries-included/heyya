@@ -33,9 +33,9 @@ defmodule Heyya.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:snapshy, "~> 0.2"},
-      {:phoenix_live_view, "~> 0.18.3"},
-      {:phoenix, "~> 1.6.15"},
+      {:snapshy, "~> 0.3"},
+      {:phoenix_live_view, "~> 0.18.16"},
+      {:phoenix, "~> 1.7.1"},
       # Dev deps
       {:ex_doc, "~> 0.29.1", only: [:dev], runtime: false},
       {:dialyxir, "~> 1.2", only: [:dev], runtime: false},

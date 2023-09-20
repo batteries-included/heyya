@@ -9,7 +9,7 @@
    flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
-        elixir = pkgs.beam.packages.erlang.elixir;
+        elixir = pkgs.beam.packages.erlang.elixir_1_15;
         erlang = pkgs.beam.packages.erlang.erlang;
         rebar3 = pkgs.beam.packages.erlang.rebar3;
         locales = pkgs.glibcLocales;

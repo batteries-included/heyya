@@ -85,16 +85,18 @@ defmodule Heyya.SnapshotTest do
     deep_compare(s, r)
   end
 
+  @spec override? :: boolean
   def override? do
     System.get_env("HEYYA_OVERRIDE") == "true"
   end
 
   @spec override!(Macro.Env.t(), binary) :: :ok
   def override!(%Macro.Env{} = env, content) do
-    dir = directory(env)
+    base_dir = directory(env)
     fname = filename(env)
-    File.mkdir_p!(dir)
-    dir |> Path.join(fname) |> File.write!(content)
+
+    File.mkdir_p!(base_dir)
+    base_dir |> Path.join(fname) |> File.write!(content)
 
     # Print out some visual indication that
     # we wrote a new file and skipped the test
@@ -219,8 +221,12 @@ defmodule Heyya.SnapshotTest do
     base =
       function_name
       |> Atom.to_string()
+      # Collapse multiple spaces together
       |> String.replace(~r/\s+/, "_")
-      |> String.downcase()
+      # Function names can have slashes
+      |> String.replace(~r/\/+/, "__")
+      # Just to make sure
+      |> Macro.underscore()
 
     base <> ".heyya_snap"
   end

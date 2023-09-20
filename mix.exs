@@ -1,14 +1,14 @@
 defmodule Heyya.MixProject do
   use Mix.Project
 
-  @version "0.3.1"
+  @version "0.4.0"
   @source_url "https://github.com/batteries-included/heyya"
 
   def project do
     [
       app: :heyya,
       version: @version,
-      elixir: "~> 1.14",
+      elixir: "~> 1.15",
       description: description(),
       docs: docs(),
       package: package(),
@@ -33,9 +33,9 @@ defmodule Heyya.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:snapshy, "~> 0.3"},
-      {:phoenix_live_view, "~> 0.19.0"},
-      {:phoenix, "~> 1.7.1"},
+      {:phoenix_live_view, "~> 0.19.5"},
+      {:phoenix, "~> 1.7.7"},
+      {:floki, "~> 0.34.3"},
       # Dev deps
       {:ex_doc, "~> 0.29.1", only: [:dev], runtime: false},
       {:dialyxir, "~> 1.2", only: [:dev], runtime: false},

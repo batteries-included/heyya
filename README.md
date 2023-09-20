@@ -1,6 +1,6 @@
 # Heyya
 
-`Heyya` is a utility to help with testing your [Phoenix](https://www.phoenixframework.org/) components and live view. Under the hood it uses [Snapshy](https://hex.pm/packages/snapshy)
+`Heyya` is a utility to help with testing your [Phoenix](https://www.phoenixframework.org/) components and live view.
 
 ## Getting Started
 
@@ -11,7 +11,7 @@ To use Heyya in your Phoenix project, add it to your list of dependencies in mix
 ```elixir
 def deps do
   [
-    {:heyya, "~> 0.2.0"}
+    {:heyya, "~> 0.4.0"}
   ]
 end
 ```
@@ -34,7 +34,11 @@ end
 
 To run the snapshot tests, run `mix test` as usual. This will compare the snapshots to the current rendered output of the components and fail the tests if the snapshots do not match.
 
-If you need to update the snapshots for any reason, you can run `SNAPSHY_OVERRIDE=true mix test` to reset the snapshot values to the current rendered output of the components.
+If you need to update the snapshots for any reason, you can run `HEYYA_OVERRIDE=true mix test` to reset the snapshot values to the current rendered output of the components.
+
+Credit:
+
+The initial snapshot code used [Snapshy](https://hex.pm/packages/snapshy). We have since moved on to inspect the html rather than using snapshy. Thank you to them for the initial implementation.
 
 ## Example Live View Test
 

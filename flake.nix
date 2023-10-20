@@ -10,6 +10,7 @@
       let
         pkgs = import nixpkgs { inherit system; };
         elixir = pkgs.beam.packages.erlang.elixir_1_15;
+        elixir-ls = pkgs.beam.packages.erlang.elixir-ls.override {elixir = elixir;};
         erlang = pkgs.beam.packages.erlang.erlang;
         rebar3 = pkgs.beam.packages.erlang.rebar3;
         locales = pkgs.glibcLocales;
@@ -35,6 +36,7 @@
 
         buildInputs = [
           elixir
+          elixir-ls
           erlang
           rebar3
           locales

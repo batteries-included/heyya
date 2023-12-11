@@ -29,18 +29,18 @@ defmodule Heyya.LiveTest do
 
   import ExUnit.Assertions
 
-  alias Phoenix.LiveViewTest
   alias Heyya.LiveTestSession
+  alias Phoenix.LiveViewTest
 
   defmacro __using__(_opts) do
     quote do
-      # require the modules that we use the macros in
-      require Heyya.LiveTest
-      require Phoenix.LiveViewTest
-
       # import things, but only import what we absolutely need from LiveViewTest
       import Heyya.LiveTest
       import Phoenix.LiveViewTest, only: [live: 1, live: 2, follow_redirect: 3]
+
+      # require the modules that we use the macros in
+      require Heyya.LiveTest
+      require Phoenix.LiveViewTest
     end
   end
 
@@ -57,19 +57,45 @@ defmodule Heyya.LiveTest do
     end
   end
 
+  @doc """
+  Macro that creates code to follow a redirect. This takes
+  in a LiveTestSession and will assert that a redirect exists.
+  """
   defmacro follow(before, to \\ nil) do
     quote bind_quoted: [before: before, to: to] do
       # The value coming in will likely be a piped in LiveTestSession how,
       # But we want to always return a new LiveTestSession so wrap the follow in a lambda
       # called via then()
-      before
-      |> then(fn %Heyya.LiveTestSession{html: html, conn: conn} = test_session ->
-        assert {:ok, new_view, new_html} = follow_redirect(html, conn, to),
-               "Should follow any redirects that exist"
+      then(before, fn %Heyya.LiveTestSession{html: html, conn: conn} = test_session ->
+        assert {:ok, new_view, new_html} = follow_redirect(html, conn, to), "Should follow any redirects that exist"
 
         %Heyya.LiveTestSession{test_session | html: new_html, view: new_view}
       end)
     end
+  end
+
+  @doc """
+  This method will use LiveViewTest.render_async to ensure that all
+  outstanding async operations are completed.  By default this
+  will wait the ExUnit default timeout.
+  """
+  def await_async(
+        %LiveTestSession{view: view} = test_session,
+        timeout \\ Application.fetch_env!(:ex_unit, :assert_receive_timeout)
+      ) do
+    %LiveTestSession{test_session | html: LiveViewTest.render_async(view, timeout)}
+  end
+
+  @spec focus(Heyya.LiveTestSession.t(), binary()) :: Heyya.LiveTestSession.t()
+  def focus(%LiveTestSession{view: view} = test_session, selector) do
+    assert_element(test_session, selector)
+
+    new_html =
+      view
+      |> LiveViewTest.element(selector)
+      |> LiveViewTest.render_focus()
+
+    %LiveTestSession{test_session | html: new_html}
   end
 
   @doc """
@@ -135,6 +161,12 @@ defmodule Heyya.LiveTest do
   #
   ###
 
+  @doc """
+  Asserts that the html in the LiveTestSession matches the
+  provided expected html.
+
+  Returns the LiveTestSession.
+  """
   @spec assert_html(Heyya.LiveTestSession.t(), String.t() | Regex.t()) ::
           Heyya.LiveTestSession.t()
   def assert_html(%LiveTestSession{html: html} = test_session, expected_html) do
@@ -144,6 +176,11 @@ defmodule Heyya.LiveTest do
     test_session
   end
 
+  @doc """
+  Refute that the html in the LiveTestSession matches the provided html string.
+
+  Returns the LiveTestSession.
+  """
   @spec refute_html(Heyya.LiveTestSession.t(), String.t() | Regex.t()) ::
           Heyya.LiveTestSession.t()
   def refute_html(%LiveTestSession{html: html} = test_session, unexpected_html) do

@@ -15,11 +15,9 @@ defmodule Heyya.SnapshotTest do
     quote do
       use ExUnit.Case
 
+      import Heyya.SnapshotTest, only: [component_snapshot_test: 2, component_snapshot_test: 3]
       import Phoenix.Component, except: [link: 1]
       import Phoenix.LiveViewTest
-
-      import Heyya.SnapshotTest,
-        only: [component_snapshot_test: 2, component_snapshot_test: 3]
     end
   end
 
@@ -124,10 +122,7 @@ defmodule Heyya.SnapshotTest do
   # ## Returns
   #
   # True if the nodes match, false otherwise.
-  defp deep_compare(
-         {expected_node, expected_attrs, expected_content},
-         {test_node, test_attrs, test_content}
-       ) do
+  defp deep_compare({expected_node, expected_attrs, expected_content}, {test_node, test_attrs, test_content}) do
     expected_node == test_node && compare_attrs(expected_attrs, test_attrs) &&
       deep_compare(expected_content, test_content)
   end
@@ -141,8 +136,7 @@ defmodule Heyya.SnapshotTest do
   #
   # True if the trimmed content matches, false otherwise.
   # """
-  defp deep_compare(expected_content, test_content)
-       when is_binary(expected_content) and is_binary(test_content) do
+  defp deep_compare(expected_content, test_content) when is_binary(expected_content) and is_binary(test_content) do
     String.trim(expected_content) == String.trim(test_content)
   end
 
@@ -209,10 +203,9 @@ defmodule Heyya.SnapshotTest do
     kept_inner_dir = Enum.drop(inner_dir_parts, -1)
 
     suffix =
-      (kept_inner_dir ++ [filename_part])
-      # Join everything back together
-      |> Path.join()
+      Path.join(kept_inner_dir ++ [filename_part])
 
+    # Join everything back together
     Path.join(base_dir, suffix)
   end
 

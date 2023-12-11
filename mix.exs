@@ -39,7 +39,8 @@ defmodule Heyya.MixProject do
       # Dev deps
       {:ex_doc, "~> 0.30", only: [:dev], runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev], runtime: false},
-      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
+      {:styler, "~> 0.10", only: [:dev, :test], runtime: false}
     ]
   end
 

@@ -85,8 +85,9 @@ defmodule Heyya.SnapshotTest do
 
   @spec override? :: boolean
   def override? do
-    System.get_env("HEYYA_OVERRIDE") == "true"
+    "HEYYA_OVERRIDE" |> System.get_env() |> overriding_value?()
   end
+
 
   @spec override!(Macro.Env.t(), binary) :: :ok
   def override!(%Macro.Env{} = env, content) do
@@ -100,6 +101,13 @@ defmodule Heyya.SnapshotTest do
     # we wrote a new file and skipped the test
     IO.write("S")
   end
+
+  defp overriding_value?("true"), do: true
+  defp overriding_value?("TRUE"), do: true
+  defp overriding_value?("1"), do: true
+  defp overriding_value?("YES"), do: true
+  defp overriding_value?("yes"), do: true
+  defp overriding_value?(_), do: false
 
   defp deep_compare(expected, test_value) when is_list(expected) and is_list(test_value) do
     # Deep compare is given a list of nodes. Those lists should be the same

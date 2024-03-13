@@ -9,10 +9,24 @@
    flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
-        elixir = pkgs.beam.packages.erlang.elixir_1_15;
-        elixir-ls = pkgs.beam.packages.erlang.elixir-ls.override {elixir = elixir;};
-        erlang = pkgs.beam.packages.erlang.erlang;
-        rebar3 = pkgs.beam.packages.erlang.rebar3;
+
+        beam = pkgs.beam;
+        beamPackages = beam.packagesWith beam.interpreters.erlang_26;
+        erlang = beamPackages.erlang;
+        rebar3 = beamPackages.rebar3;
+
+        # elixir and elixir-ls are using the same version
+        elixir = beamPackages.elixir_1_16;
+        hex = beamPackages.hex.override { inherit elixir; };
+        elixir-ls = (beamPackages.elixir-ls.override { inherit elixir; }).overrideAttrs (_old: {
+          buildPhase =
+            ''
+              runHook preBuild
+              mix do compile --no-deps-check, elixir_ls.release2
+              runHook postBuild
+            '';
+        });
+
         locales = pkgs.glibcLocales;
       in
       {
@@ -28,7 +42,6 @@
           export PATH=$HEX_HOME/bin:$PATH
 
           mix local.rebar --if-missing rebar3 ${rebar3}/bin/rebar3;
-          mix local.hex --force --if-missing
         '';
 
         LANG = "en_US.UTF-8";
@@ -39,6 +52,7 @@
           elixir-ls
           erlang
           rebar3
+          hex
           locales
         ];
       };

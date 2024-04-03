@@ -85,7 +85,7 @@ if Enum.member?([:dev, :test], Mix.env()) do
 end
 ```
 
-From then on `/heyya/host` will host dynamic content with no
+From then on `/dev/heyya/host` will host dynamic content with no layout other than a single wrapper div.
 
 
 ```

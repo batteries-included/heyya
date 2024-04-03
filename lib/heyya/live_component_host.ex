@@ -1,5 +1,14 @@
 defmodule Heyya.LiveComponentHost do
-  @moduledoc false
+  @moduledoc """
+  This live view takes in a Module name and a
+  method name then dynamically renders it. Params
+  (other than module anme and method name) are
+  passed along to the function as assigns.
+
+  Content is wrapped in a div with
+  id "heyya-inner-content" so that we know what
+  outter chrome can be ignored.
+  """
 
   use Phoenix.LiveView,
     layout: {Heyya.LiveComponentHost, :empty_layout}

@@ -6,6 +6,33 @@ defmodule Heyya.SnapshotCase do
   they work and produce what they expected to
   produce without having to hand write
   assertions.
+
+  ## Complex Tests Made Easy
+
+  Suppose you have a component button with a color
+  and and icon. You want to test that the correct
+  css class is applied to the whole dom tree. Instead
+  assert that the dom tree is functionally equivalent
+  to the expected output.
+
+  ```elixir
+  component_snapshot_test "Eiffel 65" do
+    assigns = %{}
+
+    ~H|<.button phx-click="click" class="bg-blue-500">Click me</.button>|
+  end
+  ```
+
+  ## Change Tests Faster
+
+  Any changes to that would require changes to the
+  test are easily updated by running the tests and
+  updating the snapshots. This happens by setting the
+  environment variable `HEYYA_OVERRIDE` to `true` or `1`.
+
+  ```
+  HEYYA_OVERRIDE=true mix test
+  ```
   """
 
   use ExUnit.CaseTemplate

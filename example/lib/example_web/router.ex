@@ -29,7 +29,6 @@ defmodule ExampleWeb.Router do
   if Enum.member?([:dev, :test], Mix.env()) do
     scope "/dev" do
       pipe_through :browser
-
       live "/heyya/host", Heyya.LiveComponentHost
     end
   end

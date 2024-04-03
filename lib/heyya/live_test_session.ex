@@ -2,7 +2,6 @@ defmodule Heyya.LiveTestSession do
   @moduledoc """
   This module is a struct to hold the state of a session of live view testing.
 
-
   It wraps up Plug connection, the current view, and the latest rendered html
   """
 

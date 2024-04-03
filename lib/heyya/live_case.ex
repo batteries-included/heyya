@@ -5,6 +5,11 @@ defmodule Heyya.LiveCase do
   more linear live view test. It takes care of the fact that there's
   connection state, view state, and last html state.
 
+
+  It does this by creating a `LiveTestSession` struct via `start/2` that
+  holds the connection, view, and html in a single struct. This is
+  wrapped in an CaseTemplate so that you can use it in your tests.
+
   These ideas origionally came from: https://www.reddit.com/r/elixir/comments/ydyt2m/better_liveview_tests/
 
   This implementation doesn't hide follow (in large part because

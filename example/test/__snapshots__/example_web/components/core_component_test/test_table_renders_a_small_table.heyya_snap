@@ -1,0 +1,64 @@
+<div class="overflow-y-auto px-4 sm:overflow-visible sm:px-0">
+  <table class="w-[40rem] mt-11 sm:w-full">
+    <thead class="text-sm text-left leading-6 text-zinc-500">
+      <tr>
+        <th class="p-0 pb-4 pr-6 font-normal">ID</th><th class="p-0 pb-4 pr-6 font-normal">Name</th>
+        
+      </tr>
+    </thead>
+    <tbody id="example_table" class="relative divide-y divide-zinc-100 border-t border-zinc-200 text-sm leading-6 text-zinc-700">
+      <tr class="group hover:bg-zinc-50">
+        <td class="relative p-0 ">
+          <div class="block py-4 pr-6">
+            <span class="absolute -inset-y-px right-0 -left-4 group-hover:bg-zinc-50 sm:rounded-l-xl"></span>
+            <span class="relative font-semibold text-zinc-900">
+              1
+            </span>
+          </div>
+        </td><td class="relative p-0 ">
+          <div class="block py-4 pr-6">
+            <span class="absolute -inset-y-px right-0 -left-4 group-hover:bg-zinc-50 sm:rounded-l-xl"></span>
+            <span class="relative ">
+              Some Name: 1
+            </span>
+          </div>
+        </td>
+        
+      </tr><tr class="group hover:bg-zinc-50">
+        <td class="relative p-0 ">
+          <div class="block py-4 pr-6">
+            <span class="absolute -inset-y-px right-0 -left-4 group-hover:bg-zinc-50 sm:rounded-l-xl"></span>
+            <span class="relative font-semibold text-zinc-900">
+              2
+            </span>
+          </div>
+        </td><td class="relative p-0 ">
+          <div class="block py-4 pr-6">
+            <span class="absolute -inset-y-px right-0 -left-4 group-hover:bg-zinc-50 sm:rounded-l-xl"></span>
+            <span class="relative ">
+              Some Name: 2
+            </span>
+          </div>
+        </td>
+        
+      </tr><tr class="group hover:bg-zinc-50">
+        <td class="relative p-0 ">
+          <div class="block py-4 pr-6">
+            <span class="absolute -inset-y-px right-0 -left-4 group-hover:bg-zinc-50 sm:rounded-l-xl"></span>
+            <span class="relative font-semibold text-zinc-900">
+              3
+            </span>
+          </div>
+        </td><td class="relative p-0 ">
+          <div class="block py-4 pr-6">
+            <span class="absolute -inset-y-px right-0 -left-4 group-hover:bg-zinc-50 sm:rounded-l-xl"></span>
+            <span class="relative ">
+              Some Name: 3
+            </span>
+          </div>
+        </td>
+        
+      </tr>
+    </tbody>
+  </table>
+</div>

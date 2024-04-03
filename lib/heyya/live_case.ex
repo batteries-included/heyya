@@ -1,7 +1,7 @@
-defmodule Heyya.LiveTest do
+defmodule Heyya.LiveCase do
   @moduledoc """
 
-  `Heyya.LiveTest` module provides helper methods that make it easier to write a
+  `Heyya.LiveCase` module provides helper methods that make it easier to write a
   more linear live view test. It takes care of the fact that there's
   connection state, view state, and last html state.
 
@@ -14,7 +14,7 @@ defmodule Heyya.LiveTest do
 
   ```
   defmodule MyPhoenixWeb.ListLiveTest do
-    use Heyya.LiveTest
+    use Heyya.LiveCase
     use MyPhoenixWeb.ConnCase
 
     test "widget list with new button", %{conn: conn} do
@@ -27,19 +27,21 @@ defmodule Heyya.LiveTest do
   ```
   """
 
+  use ExUnit.CaseTemplate
+
   import ExUnit.Assertions
 
   alias Heyya.LiveTestSession
   alias Phoenix.LiveViewTest
 
-  defmacro __using__(_opts) do
+  using _ do
     quote do
       # import things, but only import what we absolutely need from LiveViewTest
-      import Heyya.LiveTest
+      import Heyya.LiveCase
       import Phoenix.LiveViewTest, only: [live: 1, live: 2, follow_redirect: 3]
 
       # require the modules that we use the macros in
-      require Heyya.LiveTest
+      require Heyya.LiveCase
       require Phoenix.LiveViewTest
     end
   end

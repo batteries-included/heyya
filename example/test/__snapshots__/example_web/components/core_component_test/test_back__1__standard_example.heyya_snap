@@ -1,0 +1,6 @@
+<div class="mt-16">
+  <a href="/" data-phx-link="redirect" data-phx-link-state="push" class="text-sm font-semibold leading-6 text-zinc-900 hover:text-zinc-700">
+    <span class="hero-arrow-left-solid h-3 w-3"></span>
+    Back to home
+  </a>
+</div>

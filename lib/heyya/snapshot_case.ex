@@ -1,22 +1,51 @@
-defmodule Heyya.SnapshotTest do
+defmodule Heyya.SnapshotCase do
   @moduledoc """
-  `Heyya.SnapshotTest` allows for fast snapshot
+  `Heyya.SnapshotCase` allows for fast snapshot
   testing of Phoenix components. Snapshot testing
   components is a fast and easy way to ensure that
   they work and produce what they expected to
   produce without having to hand write
   assertions.
+
+  ## Complex Tests Made Easy
+
+  Suppose you have a component button with a color
+  and and icon. You want to test that the correct
+  css class is applied to the whole dom tree. Instead
+  assert that the dom tree is functionally equivalent
+  to the expected output.
+
+  ```elixir
+  component_snapshot_test "Eiffel 65" do
+    assigns = %{}
+
+    ~H|<.button phx-click="click" class="bg-blue-500">Click me</.button>|
+  end
+  ```
+
+  ## Change Tests Faster
+
+  Any changes to that would require changes to the
+  test are easily updated by running the tests and
+  updating the snapshots. This happens by setting the
+  environment variable `HEYYA_OVERRIDE` to `true` or `1`.
+
+  ```
+  HEYYA_OVERRIDE=true mix test
+  ```
   """
+
+  use ExUnit.CaseTemplate
 
   @doc """
   Wire up the module to prepare for snapshot testing.
   """
-  defmacro __using__(_opts) do
+  using _ do
     quote do
       use ExUnit.Case
 
-      import Heyya.SnapshotTest, only: [component_snapshot_test: 2, component_snapshot_test: 3]
-      import Phoenix.Component, except: [link: 1]
+      import Heyya.SnapshotCase, only: [component_snapshot_test: 2, component_snapshot_test: 3]
+      import Phoenix.Component
       import Phoenix.LiveViewTest
     end
   end
@@ -27,7 +56,7 @@ defmodule Heyya.SnapshotTest do
   defmacro component_snapshot_test(name, do: expr) do
     quote do
       test unquote(name) do
-        Heyya.SnapshotTest.inner_test(unquote(expr))
+        Heyya.SnapshotCase.inner_test(unquote(expr))
       end
     end
   end
@@ -38,7 +67,7 @@ defmodule Heyya.SnapshotTest do
   defmacro component_snapshot_test(name, context, do: expr) do
     quote do
       test unquote(name), unquote(context) do
-        Heyya.SnapshotTest.inner_test(unquote(expr))
+        Heyya.SnapshotCase.inner_test(unquote(expr))
       end
     end
   end
@@ -46,9 +75,9 @@ defmodule Heyya.SnapshotTest do
   defmacro inner_test(expr) do
     quote do
       rendered = rendered_to_string(unquote(expr))
-      snapshot = Heyya.SnapshotTest.get_snapshot(unquote(Macro.escape(__CALLER__)))
+      snapshot = Heyya.SnapshotCase.get_snapshot(unquote(Macro.escape(__CALLER__)))
 
-      case {Heyya.SnapshotTest.compare_html(snapshot, rendered), Heyya.SnapshotTest.override?()} do
+      case {Heyya.SnapshotCase.compare_html(snapshot, rendered), Heyya.SnapshotCase.override?()} do
         {true, _} ->
           # If they match (might not be string identical)
           # then return ok
@@ -56,7 +85,7 @@ defmodule Heyya.SnapshotTest do
 
         {false, true} ->
           # If we didn't match but we're allowed to overwrite, then do that now
-          Heyya.SnapshotTest.override!(unquote(Macro.escape(__CALLER__)), rendered)
+          Heyya.SnapshotCase.override!(unquote(Macro.escape(__CALLER__)), rendered)
 
           # If we overwrite everything then return ok
           :ok
@@ -87,7 +116,6 @@ defmodule Heyya.SnapshotTest do
   def override? do
     "HEYYA_OVERRIDE" |> System.get_env() |> overriding_value?()
   end
-
 
   @spec override!(Macro.Env.t(), binary) :: :ok
   def override!(%Macro.Env{} = env, content) do

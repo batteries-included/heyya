@@ -6,18 +6,20 @@
   };
 
   outputs = inputs@{ flake-utils, nixpkgs, ... }:
-   flake-utils.lib.eachDefaultSystem (system:
+    flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
 
         beam = pkgs.beam;
         beamPackages = beam.packagesWith beam.interpreters.erlang_26;
         erlang = beamPackages.erlang;
-        rebar3 = beamPackages.rebar3;
+        rebar = beamPackages.rebar.overrideAttrs (_old: { doCheck = false; });
+        rebar3 = beamPackages.rebar3.overrideAttrs (_old: { doCheck = false; });
 
-        # elixir and elixir-ls are using the same version
+        # elixir,elixir-ls, and hex are using the same version elixir
+        #
         elixir = beamPackages.elixir_1_16;
-        hex = beamPackages.hex.override { inherit elixir; };
+        # elixir-ls needs to be compiled with elixir_ls.release2 for the latest otp version
         elixir-ls = (beamPackages.elixir-ls.override { inherit elixir; }).overrideAttrs (_old: {
           buildPhase =
             ''
@@ -26,36 +28,56 @@
               runHook postBuild
             '';
         });
+        hex = beamPackages.hex.override {
+          elixir = elixir;
+        };
+
 
         locales = pkgs.glibcLocales;
       in
       {
         devShell = pkgs.mkShell {
 
-        shellHook = ''
-          # this allows mix to work on the local directory
-          mkdir -p .nix-mix
-          mkdir -p .nix-hex
-          export MIX_HOME=$PWD/.nix-mix
-          export HEX_HOME=$PWD/.nix-hex
-          export PATH=$MIX_HOME/bin:$PATH
-          export PATH=$HEX_HOME/bin:$PATH
+          shellHook = ''
+            # go to the top level.
+            pushd "$FLAKE_ROOT" &> /dev/null
+              # this allows mix to work on the local directory
+              mkdir -p .nix-mix
+              mkdir -p .nix-hex
 
-          mix local.rebar --if-missing rebar3 ${rebar3}/bin/rebar3;
-        '';
+              # set the environment variables
+              export MIX_HOME=$PWD/.nix-mix
+              export HEX_HOME=$PWD/.nix-hex
 
-        LANG = "en_US.UTF-8";
-        ERL_AFLAGS = "-kernel shell_history enabled";
+              # We want to be able to use binaries from the shell
+              # so add them to the PATH
+              export PATH=$MIX_HOME/bin:$PATH
+              export PATH=$HEX_HOME/bin:$PATH
 
-        buildInputs = [
-          elixir
-          elixir-ls
-          erlang
-          rebar3
-          hex
-          locales
-        ];
-      };
-    }
-  );
+              # install rebar3 if it's not there
+              find $MIX_HOME -type f -name 'rebar3' -executable -print0 | grep -qz . \
+                  || mix local.rebar --if-missing rebar3 ${rebar3}/bin/rebar3
+
+              # Install hex if it's not there
+              find $MIX_HOME -type f -name 'hex.app' -print0 | grep -qz . \
+                  || mix local.hex --if-missing
+          '';
+
+          LANG = "en_US.UTF-8";
+          LC_ALL = "en_US.UTF-8";
+          LC_CTYPE = "en_US.UTF-8";
+          ERL_AFLAGS = "-kernel shell_history enabled";
+
+          buildInputs = [
+            elixir
+            elixir-ls
+            erlang
+            rebar
+            rebar3
+            hex
+            locales
+          ];
+        };
+      }
+    );
 }

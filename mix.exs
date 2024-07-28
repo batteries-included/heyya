@@ -35,7 +35,7 @@ defmodule Heyya.MixProject do
     [
       {:phoenix_live_view, "~> 0.20"},
       {:phoenix, "~> 1.7"},
-      {:floki, "~> 0.35"},
+      {:floki, "~> 0.36"},
       # Dev deps
       {:ex_doc, "~> 0.31", only: [:dev], runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev], runtime: false},

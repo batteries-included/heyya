@@ -1,7 +1,7 @@
 defmodule Heyya.MixProject do
   use Mix.Project
 
-  @version "0.8.0"
+  @version "1.0.0"
   @source_url "https://github.com/batteries-included/heyya"
 
   def project do
@@ -48,7 +48,7 @@ defmodule Heyya.MixProject do
     [
       name: :heyya,
       maintainers: ["Elliott Clark"],
-      licenses: ["MIT"],
+      licenses: ["Apache-2.0"],
       links: %{"GitHub" => @source_url}
     ]
   end
@@ -58,7 +58,7 @@ defmodule Heyya.MixProject do
       main: "readme",
       source_ref: @version,
       source_url: @source_url,
-      extras: ["README.md"]
+      extras: ["README.md", "LICENSE"]
     ]
   end
 

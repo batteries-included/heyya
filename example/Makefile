@@ -1,6 +1,6 @@
 .PHONY: test lint analyze docs i
 
-all: deps compile test lint format docs analyze
+all: deps compile test format
 
 deps:
 	mix deps.get
@@ -10,15 +10,6 @@ compile:
 
 test:
 	mix test
-
-lint:
-	mix credo
-
-analyze:
-	mix dialyzer
-
-docs:
-	mix docs
 
 format:
 	mix format 

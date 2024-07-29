@@ -11,7 +11,7 @@ To use Heyya in your Phoenix project, add it to your list of dependencies in mix
 ```elixir
 def deps do
   [
-    {:heyya, "~> 0.8.0"}
+    {:heyya, "~> 1.0.0"}
   ]
 end
 ```
@@ -28,12 +28,12 @@ Changes of note are:
 
 - Added two example live views that show simple pages.
 - Added the Heyya dependency
-- Added the `/dev/heyya/host` route for dev and test environments
 - Added snapshot component tests that show variants get expected classes and aggregate components combine as expected.
 - Added live view tests that show Heyya's full page live view testing utilities. Open a page and surf around.
+- Added the `/dev/heyya/host` route for dev and test environments
 - Added a live_component tests that shows stateful component testing with dynamic content without full page data load.
 
-### Example Snapshot Usage
+### Example Component Snapshot Usage
 
 ```
 use Heyya.SnapshotCase
@@ -69,12 +69,32 @@ test "widget list with new button", %{conn: conn} do
 end
 ```
 
+### Example Live View Snapshot Test
+
+```elixir
+test "/numbers renders the live_view", %{conn: conn} do
+  conn
+  |> start(~p"/numbers")
+  |> assert_matches_snapshot(name: "full_view", selector: "main")
+end
+```
+
+That will start a live view test session and assert that the rendered output of the
+live view matches the snapshot named "full_view" after asserting that there
+is an element with the selector "main".
+
+This is a very fast way to assert that the live view is rendering the expected
+output. The default selector is "main" if none is provided, and you will likely
+want to provide a selector to ensure that the snapshot is only capturing the relevant part of the rendered output.
+
 ### Example Live Component Test
+
 In order to test a live view component we need a full
 endpoint. Attach the component host into the Router for test
 environments (attaching for debug is nice sometimes too).
 
 That can be done like this:
+
 ```
 if Enum.member?([:dev, :test], Mix.env()) do
   scope "/dev" do
@@ -86,7 +106,6 @@ end
 ```
 
 From then on `/dev/heyya/host` will host dynamic content with no layout other than a single wrapper div.
-
 
 ```
   use Heyya.LiveComponentCase
@@ -113,4 +132,4 @@ We welcome contributions to Heyya! Please see the CONTRIBUTING.md file for guide
 
 ## License
 
-Heyya is released under the MIT License.
+Heyya is released under the Apache 2.0

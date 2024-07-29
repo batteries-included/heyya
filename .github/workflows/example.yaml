@@ -1,0 +1,49 @@
+name: Example Project
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  all-checks:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup ASDF
+        uses: asdf-vm/actions/setup@v3
+      - name: Cache ASDF
+        uses: actions/cache@v4
+        id: asdf-cache
+        with:
+          path: |
+            ~/.asdf/installs
+            ~/.asdf/plugins
+            ~/.asdf/shims
+          key: ${{ runner.os }}-asdf-tools-${{ hashFiles('.tool-versions') }}
+          restore-keys: ${{ runner.os }}-asdf-tools-
+      - name: Install ASDF Tools
+        uses: asdf-vm/actions/install@v3
+        if: ${{ steps.asdf-cache.outputs.cache-hit != 'true' }}
+        with:
+          asdf_branch: v0.14.0
+      - name: Reshim ASDF
+        shell: bash
+        run: asdf reshim
+      - name: Cache Elixir Deps
+        uses: actions/cache@v4
+        id: example-cache
+        with:
+          path: |
+            example/deps
+            example/_build
+          key: ${{ runner.os }}-test-deep-${{ hashFiles('example/mix.lock', '.tool-versions') }}
+          restore-keys: |
+            ${{ runner.os }}-test-deep-
+          save-always: true
+      - name: Run example test
+        run: pushd example && make && popd

@@ -21,23 +21,31 @@ defmodule ExampleWeb.NumbersLiveTest do
     |> click("#btn-33")
   end
 
+  test "/numbers renders the live_view", %{conn: conn} do
+    conn
+    |> start(~p"/numbers")
+    |> assert_matches_snapshot(name: "full_view", selector: "main")
+  end
+
   test "/numbers renders the live_view with default name", %{conn: conn} do
     conn
     |> start(~p"/numbers")
     |> assert_matches_snapshot()
   end
 
-  test "/numbers renders the live_view matches the same snapshot", %{conn: conn} do
-    # It's possible to use the same snapshot name multiple
-    # times that will ensure that the snapshot is the same in the same test.
-    #
-    # Snapshot names are unique/scoped per test.
-    conn
-    |> start(~p"/numbers")
-    |> assert_matches_snapshot(name: "base")
+  describe "/numbers" do
+    test "/numbers renders the live_view matches the same snapshot", %{conn: conn} do
+      # It's possible to use the same snapshot name multiple
+      # times that will ensure that the snapshot is the same in the same test.
+      #
+      # Snapshot names are unique/scoped per test.
+      conn
+      |> start(~p"/numbers")
+      |> assert_matches_snapshot(name: "base")
 
-    conn
-    |> start(~p"/numbers")
-    |> assert_matches_snapshot(name: "base")
+      conn
+      |> start(~p"/numbers")
+      |> assert_matches_snapshot(name: "base")
+    end
   end
 end

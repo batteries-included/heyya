@@ -25,21 +25,21 @@ defmodule Example.MixProject do
 
   defp deps do
     [
-      {:phoenix, "~> 1.7.11"},
-      {:phoenix_html, "~> 4.0"},
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:phoenix_live_view, "~> 0.20.2"},
+      {:phoenix, "~> 1.7"},
+      {:phoenix_html, "~> 4.1"},
+      {:phoenix_live_reload, "~> 1.5", only: :dev},
+      {:phoenix_live_view, "~> 0.20"},
       {:floki, ">= 0.30.0", only: :test},
       {:esbuild, "~> 0.8", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
       {:heroicons,
        github: "tailwindlabs/heroicons", tag: "v2.1.1", sparse: "optimized", app: false, compile: false, depth: 1},
-      {:finch, "~> 0.13"},
-      {:telemetry_metrics, "~> 0.6"},
-      {:telemetry_poller, "~> 1.0"},
-      {:jason, "~> 1.2"},
-      {:dns_cluster, "~> 0.1.1"},
-      {:bandit, "~> 1.2"},
+      {:finch, "~> 0.18"},
+      {:telemetry_metrics, "~> 1.0"},
+      {:telemetry_poller, "~> 1.1"},
+      {:jason, "~> 1.4"},
+      {:dns_cluster, "~> 0.1"},
+      {:bandit, "~> 1.5"},
       {:styler, "~> 0.11", only: [:dev, :test], runtime: false},
 
       # Heyya is added here for testing of

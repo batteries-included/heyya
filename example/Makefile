@@ -1,6 +1,6 @@
-.PHONY: deps compile test lint analyze docs
+.PHONY: deps compile test
 
-all: deps compile test lint format docs analyze
+all: deps compile test format
 
 deps:
 	mix deps.get
@@ -10,15 +10,6 @@ compile: $(wildcard **/*.ex **/*.exs)
 
 test:
 	mix test
-
-lint:
-	mix credo
-
-analyze:
-	mix dialyzer
-
-docs:
-	mix docs
 
 format: $(wildcard **/*.ex **/*.exs)
 	mix format 

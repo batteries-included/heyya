@@ -82,6 +82,86 @@ defmodule Heyya.LiveCase do
   end
 
   @doc """
+  This macro will assert that the rendered html matches the snapshot.
+
+  ## Options
+
+  The macro accepts the following options in a keyword list:
+
+  - `:name` - The name of the snapshot. Defaults to the
+  line number. It's not recommended to use the default since
+  moving the test will change the snapshot name.
+  Note: names are scoped per function.
+
+  - `:selector` - The selector to use to match
+  the snapshot. Defaults to "main". Selector should
+  always select a single element so that LiveViewTest can
+  render it to html.
+
+  ## Example
+
+  For example the following will start the live view at /numbers and
+  then assert that the element selected by #btn-32 matches
+  the snapshot named "numbers"
+
+  ```elixir
+  test "/numbers renders the a button", %{conn: conn} do
+    conn
+    |> start(~p"/numbers")
+    |> assert_matches_snapshot(name: "numbers", selector: "#btn-32")
+  end
+  ```
+
+  """
+  @spec assert_matches_snapshot(LiveTestSession.t(), keyword()) :: any()
+  defmacro assert_matches_snapshot(before, options \\ []) do
+    name =
+      Keyword.get_lazy(options, :name, fn ->
+        line =
+          __CALLER__
+          |> Macro.Env.location()
+          |> Keyword.get(:line)
+
+        "Line_#{line}"
+      end)
+
+    base_dir = Heyya.SnapshotUtil.directory(__CALLER__)
+    fname = Heyya.SnapshotUtil.filename(__CALLER__, name)
+    selector = Keyword.get(options, :selector, "main")
+
+    quote bind_quoted: [before: before, selector: selector, base_dir: base_dir, fname: fname] do
+      then(before, fn %Heyya.LiveTestSession{view: view} = test_session ->
+        # Assert that the element is there
+        assert_element(test_session, selector)
+
+        # Grab the html of the element
+        rendered =
+          view
+          |> LiveViewTest.element(selector)
+          |> LiveViewTest.render()
+
+        snapshot = Heyya.SnapshotUtil.get_snapshot(Path.join(base_dir, fname))
+
+        case {Heyya.SnapshotUtil.compare_html(snapshot, rendered), Heyya.SnapshotUtil.override?()} do
+          {true, _} ->
+            test_session
+
+          {false, true} ->
+            Heyya.SnapshotUtil.overwrite!(base_dir, fname, rendered)
+            test_session
+
+          {false, false} ->
+            raise ExUnit.AssertionError,
+              left: snapshot,
+              right: rendered,
+              message: "Received value does not match stored snapshot.",
+              expr: "Snapshot == Received"
+        end
+      end)
+    end
+  end
+
+  @doc """
   This method will use LiveViewTest.render_async to ensure that all
   outstanding async operations are completed.  By default this
   will wait the ExUnit default timeout.

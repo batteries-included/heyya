@@ -1,0 +1,288 @@
+<main class="px-4 py-20 sm:px-6 lg:px-8"><div class="mx-auto max-w-3xl"><div id="flash-group"><div id="client-error" phx-click="[[&quot;push&quot;,{&quot;value&quot;:{&quot;key&quot;:&quot;error&quot;},&quot;event&quot;:&quot;lv:clear-flash&quot;}],[&quot;hide&quot;,{&quot;time&quot;:200,&quot;to&quot;:&quot;#client-error&quot;,&quot;transition&quot;:[[&quot;transition-all&quot;,&quot;transform&quot;,&quot;ease-in&quot;,&quot;duration-200&quot;],[&quot;opacity-100&quot;,&quot;translate-y-0&quot;,&quot;sm:scale-100&quot;],[&quot;opacity-0&quot;,&quot;translate-y-4&quot;,&quot;sm:translate-y-0&quot;,&quot;sm:scale-95&quot;]]}]]" role="alert" class="fixed top-2 right-2 mr-2 w-80 sm:w-96 z-50 rounded-lg p-3 ring-1 bg-rose-50 text-rose-900 shadow-md ring-rose-500 fill-rose-900" hidden="hidden" phx-connected="[[&quot;hide&quot;,{&quot;time&quot;:200,&quot;to&quot;:&quot;#client-error&quot;,&quot;transition&quot;:[[&quot;transition-all&quot;,&quot;transform&quot;,&quot;ease-in&quot;,&quot;duration-200&quot;],[&quot;opacity-100&quot;,&quot;translate-y-0&quot;,&quot;sm:scale-100&quot;],[&quot;opacity-0&quot;,&quot;translate-y-4&quot;,&quot;sm:translate-y-0&quot;,&quot;sm:scale-95&quot;]]}]]" phx-disconnected="[[&quot;show&quot;,{&quot;to&quot;:&quot;.phx-client-error #client-error&quot;,&quot;transition&quot;:[[&quot;transition-all&quot;,&quot;transform&quot;,&quot;ease-out&quot;,&quot;duration-300&quot;],[&quot;opacity-0&quot;,&quot;translate-y-4&quot;,&quot;sm:translate-y-0&quot;,&quot;sm:scale-95&quot;],[&quot;opacity-100&quot;,&quot;translate-y-0&quot;,&quot;sm:scale-100&quot;]]}]]"><p class="flex items-center gap-1.5 text-sm font-semibold leading-6"><span class="hero-exclamation-circle-mini h-4 w-4"></span>
+    We can&#39;t find the internet
+  </p><p class="mt-2 text-sm leading-5">
+    Attempting to reconnect <span class="hero-arrow-path ml-1 h-3 w-3 animate-spin"></span></p><button type="button" class="group absolute top-1 right-1 p-2" aria-label="close"><span class="hero-x-mark-solid h-5 w-5 opacity-40 group-hover:opacity-70"></span></button></div><div id="server-error" phx-click="[[&quot;push&quot;,{&quot;value&quot;:{&quot;key&quot;:&quot;error&quot;},&quot;event&quot;:&quot;lv:clear-flash&quot;}],[&quot;hide&quot;,{&quot;time&quot;:200,&quot;to&quot;:&quot;#server-error&quot;,&quot;transition&quot;:[[&quot;transition-all&quot;,&quot;transform&quot;,&quot;ease-in&quot;,&quot;duration-200&quot;],[&quot;opacity-100&quot;,&quot;translate-y-0&quot;,&quot;sm:scale-100&quot;],[&quot;opacity-0&quot;,&quot;translate-y-4&quot;,&quot;sm:translate-y-0&quot;,&quot;sm:scale-95&quot;]]}]]" role="alert" class="fixed top-2 right-2 mr-2 w-80 sm:w-96 z-50 rounded-lg p-3 ring-1 bg-rose-50 text-rose-900 shadow-md ring-rose-500 fill-rose-900" hidden="hidden" phx-connected="[[&quot;hide&quot;,{&quot;time&quot;:200,&quot;to&quot;:&quot;#server-error&quot;,&quot;transition&quot;:[[&quot;transition-all&quot;,&quot;transform&quot;,&quot;ease-in&quot;,&quot;duration-200&quot;],[&quot;opacity-100&quot;,&quot;translate-y-0&quot;,&quot;sm:scale-100&quot;],[&quot;opacity-0&quot;,&quot;translate-y-4&quot;,&quot;sm:translate-y-0&quot;,&quot;sm:scale-95&quot;]]}]]" phx-disconnected="[[&quot;show&quot;,{&quot;to&quot;:&quot;.phx-server-error #server-error&quot;,&quot;transition&quot;:[[&quot;transition-all&quot;,&quot;transform&quot;,&quot;ease-out&quot;,&quot;duration-300&quot;],[&quot;opacity-0&quot;,&quot;translate-y-4&quot;,&quot;sm:translate-y-0&quot;,&quot;sm:scale-95&quot;],[&quot;opacity-100&quot;,&quot;translate-y-0&quot;,&quot;sm:scale-100&quot;]]}]]"><p class="flex items-center gap-1.5 text-sm font-semibold leading-6"><span class="hero-exclamation-circle-mini h-4 w-4"></span>
+    Something went wrong!
+  </p><p class="mt-2 text-sm leading-5">
+    Hang in there while we get back on track
+    <span class="hero-arrow-path ml-1 h-3 w-3 animate-spin"></span></p><button type="button" class="group absolute top-1 right-1 p-2" aria-label="close"><span class="hero-x-mark-solid h-5 w-5 opacity-40 group-hover:opacity-70"></span></button></div></div><div class="grid grid-cols-4 gap-8"><div><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-0" phx-click="remove" phx-value-number="0">
+  
+        0
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-1" phx-click="remove" phx-value-number="1">
+  
+        1
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-2" phx-click="remove" phx-value-number="2">
+  
+        2
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-3" phx-click="remove" phx-value-number="3">
+  
+        3
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-4" phx-click="remove" phx-value-number="4">
+  
+        4
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-5" phx-click="remove" phx-value-number="5">
+  
+        5
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-6" phx-click="remove" phx-value-number="6">
+  
+        6
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-7" phx-click="remove" phx-value-number="7">
+  
+        7
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-8" phx-click="remove" phx-value-number="8">
+  
+        8
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-9" phx-click="remove" phx-value-number="9">
+  
+        9
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-10" phx-click="remove" phx-value-number="10">
+  
+        10
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-11" phx-click="remove" phx-value-number="11">
+  
+        11
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-12" phx-click="remove" phx-value-number="12">
+  
+        12
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-13" phx-click="remove" phx-value-number="13">
+  
+        13
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-14" phx-click="remove" phx-value-number="14">
+  
+        14
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-15" phx-click="remove" phx-value-number="15">
+  
+        15
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-16" phx-click="remove" phx-value-number="16">
+  
+        16
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-17" phx-click="remove" phx-value-number="17">
+  
+        17
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-18" phx-click="remove" phx-value-number="18">
+  
+        18
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-19" phx-click="remove" phx-value-number="19">
+  
+        19
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-20" phx-click="remove" phx-value-number="20">
+  
+        20
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-21" phx-click="remove" phx-value-number="21">
+  
+        21
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-22" phx-click="remove" phx-value-number="22">
+  
+        22
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-23" phx-click="remove" phx-value-number="23">
+  
+        23
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-24" phx-click="remove" phx-value-number="24">
+  
+        24
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-25" phx-click="remove" phx-value-number="25">
+  
+        25
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-26" phx-click="remove" phx-value-number="26">
+  
+        26
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-27" phx-click="remove" phx-value-number="27">
+  
+        27
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-28" phx-click="remove" phx-value-number="28">
+  
+        28
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-29" phx-click="remove" phx-value-number="29">
+  
+        29
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-30" phx-click="remove" phx-value-number="30">
+  
+        30
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-31" phx-click="remove" phx-value-number="31">
+  
+        31
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-32" phx-click="remove" phx-value-number="32">
+  
+        32
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-33" phx-click="remove" phx-value-number="33">
+  
+        33
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-34" phx-click="remove" phx-value-number="34">
+  
+        34
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-35" phx-click="remove" phx-value-number="35">
+  
+        35
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-36" phx-click="remove" phx-value-number="36">
+  
+        36
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-37" phx-click="remove" phx-value-number="37">
+  
+        37
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-38" phx-click="remove" phx-value-number="38">
+  
+        38
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-39" phx-click="remove" phx-value-number="39">
+  
+        39
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-40" phx-click="remove" phx-value-number="40">
+  
+        40
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-41" phx-click="remove" phx-value-number="41">
+  
+        41
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-42" phx-click="remove" phx-value-number="42">
+  
+        42
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-43" phx-click="remove" phx-value-number="43">
+  
+        43
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-44" phx-click="remove" phx-value-number="44">
+  
+        44
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-45" phx-click="remove" phx-value-number="45">
+  
+        45
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-46" phx-click="remove" phx-value-number="46">
+  
+        46
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-47" phx-click="remove" phx-value-number="47">
+  
+        47
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-48" phx-click="remove" phx-value-number="48">
+  
+        48
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-49" phx-click="remove" phx-value-number="49">
+  
+        49
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-50" phx-click="remove" phx-value-number="50">
+  
+        50
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-51" phx-click="remove" phx-value-number="51">
+  
+        51
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-52" phx-click="remove" phx-value-number="52">
+  
+        52
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-53" phx-click="remove" phx-value-number="53">
+  
+        53
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-54" phx-click="remove" phx-value-number="54">
+  
+        54
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-55" phx-click="remove" phx-value-number="55">
+  
+        55
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-56" phx-click="remove" phx-value-number="56">
+  
+        56
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-57" phx-click="remove" phx-value-number="57">
+  
+        57
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-58" phx-click="remove" phx-value-number="58">
+  
+        58
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-59" phx-click="remove" phx-value-number="59">
+  
+        59
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-60" phx-click="remove" phx-value-number="60">
+  
+        60
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-61" phx-click="remove" phx-value-number="61">
+  
+        61
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-62" phx-click="remove" phx-value-number="62">
+  
+        62
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-63" phx-click="remove" phx-value-number="63">
+  
+        63
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-64" phx-click="remove" phx-value-number="64">
+  
+        64
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-65" phx-click="remove" phx-value-number="65">
+  
+        65
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-66" phx-click="remove" phx-value-number="66">
+  
+        66
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-67" phx-click="remove" phx-value-number="67">
+  
+        67
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-68" phx-click="remove" phx-value-number="68">
+  
+        68
+      
+</button><button class="phx-submit-loading:opacity-75 rounded-lg bg-zinc-900 hover:bg-zinc-700 py-2 px-3 text-sm font-semibold leading-6 text-white active:text-white/80 " id="btn-69" phx-click="remove" phx-value-number="69">
+  
+        69
+      
+</button></div></div></div></main>

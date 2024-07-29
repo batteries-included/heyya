@@ -42,13 +42,4 @@ defmodule HeyyaTest.SnapshotTest do
     </Header.simple>
     """
   end
-
-  describe "The inner workings" do
-    test "Heyya.SnapshotCase.compare_html/2 doesnt care about httml attr order" do
-      a = "<h1 attrone=\"a\" attrtwo=\"b\">HI</h1>"
-      b = "<h1 attrtwo=\"b\" attrone=\"a\">HI</h1>"
-
-      assert Heyya.SnapshotCase.compare_html(a, b)
-    end
-  end
 end

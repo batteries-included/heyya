@@ -1,1 +1,3 @@
 **/*.heyya_snap linguist-generated=true
+mix.lock linguist-generated=true
+example/mix.lock linguist-generated=true

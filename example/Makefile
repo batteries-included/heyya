@@ -1,15 +1,15 @@
-.PHONY: test lint analyze docs i
+.PHONY: deps compile test
 
 all: deps compile test format
 
 deps:
 	mix deps.get
 
-compile:
+compile: $(wildcard **/*.ex **/*.exs)
 	mix compile --force --warnings-as-errors
 
 test:
 	mix test
 
-format:
+format: $(wildcard **/*.ex **/*.exs)
 	mix format 

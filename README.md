@@ -69,6 +69,7 @@ test "widget list with new button", %{conn: conn} do
 end
 ```
 
+
 ### Example Live View Snapshot Test
 
 ```elixir
@@ -79,22 +80,21 @@ test "/numbers renders the live_view", %{conn: conn} do
 end
 ```
 
-That will start a live view test session and assert that the rendered output of the
-live view matches the snapshot named "full_view" after asserting that there
+That will start a live view test session and assert that the rendered output of the 
+live view matches the snapshot named "full_view" after asserting that there 
 is an element with the selector "main".
 
-This is a very fast way to assert that the live view is rendering the expected
-output. The default selector is "main" if none is provided, and you will likely
-want to provide a selector to ensure that the snapshot is only capturing the relevant part of the rendered output.
+This is a very fast way to assert that the live view is rendering the expected 
+output. The default selector is "main" if none is provided, and you will likely 
+want to provide a selector to ensure that the snapshot is only capturing the 
+relevant part of the rendered output.
 
 ### Example Live Component Test
-
 In order to test a live view component we need a full
 endpoint. Attach the component host into the Router for test
 environments (attaching for debug is nice sometimes too).
 
 That can be done like this:
-
 ```
 if Enum.member?([:dev, :test], Mix.env()) do
   scope "/dev" do
@@ -106,6 +106,7 @@ end
 ```
 
 From then on `/dev/heyya/host` will host dynamic content with no layout other than a single wrapper div.
+
 
 ```
   use Heyya.LiveComponentCase

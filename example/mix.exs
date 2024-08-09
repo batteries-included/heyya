@@ -40,7 +40,7 @@ defmodule Example.MixProject do
       {:jason, "~> 1.4"},
       {:dns_cluster, "~> 0.1"},
       {:bandit, "~> 1.5"},
-      {:styler, "~> 0.11", only: [:dev, :test], runtime: false},
+      {:styler, "~> 1.0", only: [:dev, :test], runtime: false},
 
       # Heyya is added here for testing of
       # our components, live components, and live views

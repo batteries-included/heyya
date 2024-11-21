@@ -4,8 +4,8 @@ defmodule Heyya.SnapshotUtilTest do
   alias Heyya.SnapshotUtil
 
   test "Heyya.Snapshots.compare_html/2 doesnt care about httml attr order" do
-    a = "<h1 attrone=\"a\" attrtwo=\"b\">HI</h1>"
-    b = "<h1 attrtwo=\"b\" attrone=\"a\">HI</h1>"
+    a = ~s(<h1 attrone="a" attrtwo="b">HI</h1>)
+    b = ~s(<h1 attrtwo="b" attrone="a">HI</h1>)
 
     assert SnapshotUtil.compare_html(a, b)
   end

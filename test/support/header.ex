@@ -11,7 +11,7 @@ defmodule Header do
 
   def simple(assigns) do
     ~H"""
-    <h1 class={@class} {@rest}><%= render_slot(@inner_block) %></h1>
+    <h1 class={@class} {@rest}>{render_slot(@inner_block)}</h1>
     """
   end
 end

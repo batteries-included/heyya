@@ -33,7 +33,7 @@ defmodule Heyya.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:phoenix_live_view, "~> 0.20"},
+      {:phoenix_live_view, "~> 1.0"},
       {:phoenix, "~> 1.7"},
       {:floki, "~> 0.36"},
       # Dev deps

@@ -29,7 +29,7 @@ defmodule ExampleWeb.LiveCounterComponent do
     <div class="flex flex-column gap-2">
       <button class="increment" phx-click="increment" phx-target={@myself}>Increment</button>
       <button class="reset" phx-click="reset" phx-target={@myself}>Reset</button>
-      <span>Counter: <%= @counter %></span>
+      <span>Counter: {@counter}</span>
     </div>
     """
   end

@@ -22,7 +22,7 @@ defmodule ExampleWeb.Live.NumberList do
       <div>
         <%= for number <- @numbers do %>
           <.button phx-click="remove" phx-value-number={number} id={"btn-#{number}"}>
-            <%= number %>
+            {number}
           </.button>
         <% end %>
       </div>

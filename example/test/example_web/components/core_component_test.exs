@@ -28,8 +28,8 @@ defmodule ExampleWeb.CoreComponentTest do
 
       ~H"""
       <.table rows={@rows} id="example_table">
-        <:col :let={row} label="ID"><%= row.id %></:col>
-        <:col :let={row} label="Name"><%= row.name %></:col>
+        <:col :let={row} label="ID">{row.id}</:col>
+        <:col :let={row} label="Name">{row.name}</:col>
       </.table>
       """
     end

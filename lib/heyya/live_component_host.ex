@@ -16,7 +16,7 @@ defmodule Heyya.LiveComponentHost do
   def empty_layout(assigns) do
     ~H"""
     <div id="heyya-inner-content">
-      <%= @inner_content %>
+      {@inner_content}
     </div>
     """
   end
@@ -42,7 +42,7 @@ defmodule Heyya.LiveComponentHost do
   @impl Phoenix.LiveView
   def render(assigns) do
     ~H"""
-    <%= apply(@module, @method, [@params]) %>
+    {apply(@module, @method, [@params])}
     """
   end
 

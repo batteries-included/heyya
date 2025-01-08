@@ -35,12 +35,12 @@ defmodule Heyya.MixProject do
     [
       {:phoenix_live_view, "~> 1.0"},
       {:phoenix, "~> 1.7"},
-      {:floki, "~> 0.36"},
+      {:floki, "~> 0.37"},
       # Dev deps
-      {:ex_doc, "~> 0.31", only: [:dev], runtime: false},
+      {:ex_doc, "~> 0.36", only: [:dev], runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev], runtime: false},
       {:credo, "~> 1.7", only: [:dev, :test], runtime: false},
-      {:styler, "~> 1.0", only: [:dev, :test], runtime: false}
+      {:styler, "~> 1.2", only: [:dev, :test], runtime: false}
     ]
   end
 

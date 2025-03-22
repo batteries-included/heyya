@@ -76,7 +76,7 @@ defmodule Heyya.LiveCase do
       then(before, fn %Heyya.LiveTestSession{html: html, conn: conn} = test_session ->
         assert {:ok, new_view, new_html} = follow_redirect(html, conn, to), "Should follow any redirects that exist"
 
-        %Heyya.LiveTestSession{test_session | html: new_html, view: new_view}
+        %{test_session | html: new_html, view: new_view}
       end)
     end
   end
@@ -170,7 +170,7 @@ defmodule Heyya.LiveCase do
         %LiveTestSession{view: view} = test_session,
         timeout \\ Application.fetch_env!(:ex_unit, :assert_receive_timeout)
       ) do
-    %LiveTestSession{test_session | html: LiveViewTest.render_async(view, timeout)}
+    %{test_session | html: LiveViewTest.render_async(view, timeout)}
   end
 
   @spec focus(Heyya.LiveTestSession.t(), binary()) :: Heyya.LiveTestSession.t()
@@ -182,7 +182,7 @@ defmodule Heyya.LiveCase do
       |> LiveViewTest.element(selector)
       |> LiveViewTest.render_focus()
 
-    %LiveTestSession{test_session | html: new_html}
+    %{test_session | html: new_html}
   end
 
   @doc """
@@ -205,7 +205,7 @@ defmodule Heyya.LiveCase do
       |> LiveViewTest.element(selector, text)
       |> LiveViewTest.render_click()
 
-    %LiveTestSession{test_session | html: new_html}
+    %{test_session | html: new_html}
   end
 
   @doc """
@@ -222,7 +222,7 @@ defmodule Heyya.LiveCase do
       |> LiveViewTest.form(selector, opts)
       |> LiveViewTest.render_change()
 
-    %LiveTestSession{test_session | html: new_html}
+    %{test_session | html: new_html}
   end
 
   @doc """
@@ -239,7 +239,7 @@ defmodule Heyya.LiveCase do
       |> LiveViewTest.form(selector, opts)
       |> LiveViewTest.render_submit()
 
-    %LiveTestSession{test_session | html: new_html}
+    %{test_session | html: new_html}
   end
 
   ###

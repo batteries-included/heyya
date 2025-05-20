@@ -15,7 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup ASDF
-        uses: asdf-vm/actions/setup@v3
+        uses: asdf-vm/actions/setup@v4
       - name: Cache ASDF
         uses: actions/cache@v4
         id: asdf-cache
@@ -27,7 +27,7 @@ jobs:
           key: ${{ runner.os }}-asdf-tools-${{ hashFiles('.tool-versions') }}
           restore-keys: ${{ runner.os }}-asdf-tools-
       - name: Install ASDF Tools
-        uses: asdf-vm/actions/install@v3
+        uses: asdf-vm/actions/install@v4
         if: ${{ steps.asdf-cache.outputs.cache-hit != 'true' }}
         with:
           asdf_branch: v0.14.0

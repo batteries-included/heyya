@@ -5,11 +5,11 @@ defmodule Heyya.SnapshotUtil do
 
   @spec compare_html(binary, binary) :: boolean
   def compare_html(snapshot_value, rendered_value) do
-    # Parse the HTML with Floki
+    # Parse the HTML with LazyHTML
     #
     # Since we know that all the values
-    r = Floki.parse_fragment!(rendered_value)
-    s = Floki.parse_fragment!(snapshot_value)
+    r = LazyHTML.from_fragment(rendered_value) |> LazyHTML.to_tree()
+    s = LazyHTML.from_fragment(snapshot_value) |> LazyHTML.to_tree()
 
     # For every node in the fragments compare them
     deep_compare(s, r)

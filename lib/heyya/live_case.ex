@@ -173,7 +173,7 @@ defmodule Heyya.LiveCase do
     %{test_session | html: LiveViewTest.render_async(view, timeout)}
   end
 
-  @spec focus(Heyya.LiveTestSession.t(), binary()) :: Heyya.LiveTestSession.t()
+  @spec focus(LiveTestSession.t(), binary()) :: LiveTestSession.t()
   def focus(%LiveTestSession{view: view} = test_session, selector) do
     assert_element(test_session, selector)
 
@@ -195,8 +195,8 @@ defmodule Heyya.LiveCase do
 
   returns: `%Heyya.LiveTestSession{}`
   """
-  @spec click(Heyya.LiveTestSession.t(), String.t(), String.t() | nil) ::
-          Heyya.LiveTestSession.t()
+  @spec click(LiveTestSession.t(), String.t(), String.t() | nil) ::
+          LiveTestSession.t()
   def click(%LiveTestSession{view: view} = test_session, selector, text \\ nil) do
     assert_element(test_session, selector, text)
 
@@ -215,7 +215,7 @@ defmodule Heyya.LiveCase do
 
   returns: `%Heyya.LiveTestSession{}`
   """
-  @spec form(Heyya.LiveTestSession.t(), String.t(), any) :: Heyya.LiveTestSession.t()
+  @spec form(LiveTestSession.t(), String.t(), any) :: LiveTestSession.t()
   def form(%LiveTestSession{view: view} = test_session, selector, opts) do
     new_html =
       view
@@ -232,7 +232,7 @@ defmodule Heyya.LiveCase do
 
   returns: `%Heyya.LiveTestSession{}`
   """
-  @spec submit_form(Heyya.LiveTestSession.t(), String.t(), any) :: Heyya.LiveTestSession.t()
+  @spec submit_form(LiveTestSession.t(), String.t(), any) :: LiveTestSession.t()
   def submit_form(%LiveTestSession{view: view} = test_session, selector, opts) do
     new_html =
       view
@@ -254,8 +254,8 @@ defmodule Heyya.LiveCase do
 
   Returns the LiveTestSession.
   """
-  @spec assert_html(Heyya.LiveTestSession.t(), String.t() | Regex.t()) ::
-          Heyya.LiveTestSession.t()
+  @spec assert_html(LiveTestSession.t(), String.t() | Regex.t()) ::
+          LiveTestSession.t()
   def assert_html(%LiveTestSession{html: html} = test_session, expected_html) do
     assert html =~ expected_html,
            "Expected the current live session's state html to contain expected html"
@@ -268,8 +268,8 @@ defmodule Heyya.LiveCase do
 
   Returns the LiveTestSession.
   """
-  @spec refute_html(Heyya.LiveTestSession.t(), String.t() | Regex.t()) ::
-          Heyya.LiveTestSession.t()
+  @spec refute_html(LiveTestSession.t(), String.t() | Regex.t()) ::
+          LiveTestSession.t()
   def refute_html(%LiveTestSession{html: html} = test_session, unexpected_html) do
     refute html =~ unexpected_html,
            "The current live veiew session should contain the rejected html"
@@ -277,29 +277,29 @@ defmodule Heyya.LiveCase do
     test_session
   end
 
-  @spec assert_element(Heyya.LiveTestSession.t(), String.t(), String.t() | nil) ::
-          Heyya.LiveTestSession.t()
+  @spec assert_element(LiveTestSession.t(), String.t(), String.t() | nil) ::
+          LiveTestSession.t()
   def assert_element(%LiveTestSession{view: view} = test_session, selector, text \\ nil) do
     assert LiveViewTest.has_element?(view, selector, text)
     test_session
   end
 
-  @spec refute_element(Heyya.LiveTestSession.t(), String.t(), String.t() | nil) ::
-          Heyya.LiveTestSession.t()
+  @spec refute_element(LiveTestSession.t(), String.t(), String.t() | nil) ::
+          LiveTestSession.t()
   def refute_element(%LiveTestSession{view: view} = test_session, selector, text \\ nil) do
     refute LiveViewTest.has_element?(view, selector, text)
     test_session
   end
 
-  @spec assert_page_title(Heyya.LiveTestSession.t(), String.t() | Regex.t()) ::
-          Heyya.LiveTestSession.t()
+  @spec assert_page_title(LiveTestSession.t(), String.t() | Regex.t()) ::
+          LiveTestSession.t()
   def assert_page_title(%LiveTestSession{view: view} = test_session, expected) do
     assert LiveViewTest.page_title(view) =~ expected, "The page title should match"
     test_session
   end
 
-  @spec refute_page_title(Heyya.LiveTestSession.t(), String.t() | Regex.t()) ::
-          Heyya.LiveTestSession.t()
+  @spec refute_page_title(LiveTestSession.t(), String.t() | Regex.t()) ::
+          LiveTestSession.t()
   def refute_page_title(%LiveTestSession{view: view} = test_session, unexpected) do
     refute LiveViewTest.page_title(view) =~ unexpected, "The page title should not match"
     test_session

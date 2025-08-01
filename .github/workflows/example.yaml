@@ -41,9 +41,9 @@ jobs:
           path: |
             example/deps
             example/_build
-          key: ${{ runner.os }}-test-deep-${{ hashFiles('example/mix.lock', '.tool-versions') }}
+          key: ${{ runner.os }}-test-deep-v2-${{ hashFiles('example/mix.lock', 'mix.lock', '.tool-versions') }}
           restore-keys: |
-            ${{ runner.os }}-test-deep-
+            ${{ runner.os }}-test-deep-v2-
           save-always: true
       - name: Run example test
         run: pushd example && make && popd

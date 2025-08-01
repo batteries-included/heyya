@@ -1,7 +1,7 @@
 defmodule Heyya.MixProject do
   use Mix.Project
 
-  @version "1.1.0"
+  @version "2.1.0"
   @source_url "https://github.com/batteries-included/heyya"
 
   def project do
@@ -33,9 +33,9 @@ defmodule Heyya.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:phoenix_live_view, "~> 1.0"},
+      {:phoenix_live_view, "~> 1.1"},
       {:phoenix, "~> 1.7"},
-      {:floki, "~> 0.37"},
+      {:lazy_html, "~> 0.1.3"},
       # Dev deps
       {:ex_doc, "~> 0.36", only: [:dev], runtime: false},
       {:dialyxir, "~> 1.4", only: [:dev], runtime: false},

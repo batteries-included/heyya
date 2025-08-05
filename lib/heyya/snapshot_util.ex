@@ -8,8 +8,8 @@ defmodule Heyya.SnapshotUtil do
     # Parse the HTML with LazyHTML
     #
     # Since we know that all the values
-    r = LazyHTML.from_fragment(rendered_value) |> LazyHTML.to_tree()
-    s = LazyHTML.from_fragment(snapshot_value) |> LazyHTML.to_tree()
+    r = rendered_value |> LazyHTML.from_fragment() |> LazyHTML.to_tree()
+    s = snapshot_value |> LazyHTML.from_fragment() |> LazyHTML.to_tree()
 
     # For every node in the fragments compare them
     deep_compare(s, r)

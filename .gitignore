@@ -28,3 +28,6 @@ heyya-*.tar
 .direnv
 .nix-mix
 .nix-hex
+
+# Vscode settings
+.vscode/settings.json
